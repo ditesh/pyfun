@@ -37,8 +37,7 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Python Fun-ctors</h1>
-					<h3>Fun with functions</h3>
+					<h1>Python Day #1</h1>
 					<p>
 						<small>Created by <a href="http://ditesh.gathani.org">Ditesh Gathani</a> / <a href="http://twitter.com/ditesh">@ditesh</a></small>
 					</p>
@@ -48,21 +47,17 @@
 					<h2>Running Code</h2>
                     <p>
                         Spawn python from the CLI
-                        <pre><code data-trim contenteditable>
+                        <pre><code data-trim contenteditable class="bash">
                         $ python main.py
                         </code></pre>
                     </p>
                     <br>
                     <p>
                         Executable from the command line
-                        <pre><code data-trim contenteditable>
-                        Add #!/usr/bin/env python
-                        </pre></code>
-                        <pre><code data-trim contenteditable>
-                        $ chmod a+x main.py
-                        </pre></code>
-                        <pre><code data-trim contenteditable>
-                        $ ./main.py # it runs from the CLI
+                        <pre><code data-trim contenteditable class="bash">
+Add #!/usr/bin/env python
+$ chmod a+x main.py
+$ ./main.py # it runs from the CLI
                         </code></pre>
                     </p>
 	
@@ -494,7 +489,19 @@ $ python
 				history: true,
 				center: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+                // Parallax background image
+                parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+
+                // Parallax background size
+                parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+
+                // Amount of pixels to move the parallax background per slide step,
+                // a value of 0 disables movement along the given axis
+                // These are optional, if they aren't specified they'll be calculated automatically
+                parallaxBackgroundHorizontal: 50,
+                parallaxBackgroundVertical: 50,
 
 				// Optional reveal.js plugins
 				dependencies: [
