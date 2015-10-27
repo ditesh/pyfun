@@ -84,14 +84,16 @@ $ ./main.py # it runs from the CLI
 
 				<section>
                         <pre><code data-trim contenteditable class="python">
+# What is F(10)
 i, a, b = 0, 1, 1
 
-while (i < 10):
+while (i < 11):
     i += 1
     a, b = b, a + b
 
 print a
                         </code></pre>
+                        <p>Exercise: draw an execution table</p>
                         <p>What does <code>+=</code> do?</p>
                         <p>What does the variable swap do?</p>
                         <p>Is the code correct? (Hint: off by one errors are super common)</p>
@@ -113,16 +115,16 @@ print a
 
 				<section>
                     <p>What if people want to use this epic Fib calculator, and not hardcode values?</p>
-                        <pre><code data-trim contenteditable class="python">
+                    <pre><code data-trim contenteditable class="python">
 # Like this
 print fib(10)
-                        </code></pre>
+                    </code></pre>
                 </section>
 
 				<section>
-                        <pre><code data-trim contenteditable class="python">
+                    <pre><code data-trim contenteditable class="python">
 # Fibonacci function
-# It accepts the number of fibonacci numbers to sum (from 1)
+# It accepts the number of fibonacci numbers to sum
 # and returns the sum
 def fib(n):
 
@@ -139,11 +141,11 @@ def fib(n):
 
 # Like this
 print fib(10)
-                        </code></pre>
+                    </code></pre>
                 </section>
 
 				<section>
-                    <h2>A side trek to types</h2>
+                    <h2>Side trek to types</h2>
                     <p>Types basically tell the system how much memory to use,<br>
                     and they allow the compiler to enforce correctness</p>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Bankswitch_memory_map.svg/765px-Bankswitch_memory_map.svg.png" height="500px">
@@ -155,7 +157,7 @@ print fib(10)
                         <p>Compilers basically do the following:</p>
                         <ol>
                             <li>Read in your code</li>
-                            <li>Do a grammar check (also known as <code>linting</code></li>
+                            <li>Do a grammar check (also known as <code>linting</code>)</li>
                             <li>Convert the code to an Abstract Syntax Tree (trees are very common structures in CS)</li>
                             <li>Do a semantic check (type checking happens here)</li>
                             <li>Repeated optimization via tree manipulation (super fun)</li>
@@ -165,9 +167,9 @@ print fib(10)
 
 				<section>
                     <h2>What does machine code look like?</h2>
-                    <p>Note: hexadecimal (hex) numbers are basically base-16 numbers</p>
-                    <p><code>hexdump</code> fun</p>
-                    <p><code>magic numbers</code> fun</p>
+                    <p>Note: hex numbers are basically base-16 numbers</p>
+                    <p>Note to self: <code>hexdump</code> fun</p>
+                    <p>Note to self: <code>magic numbers</code> fun</p>
                     <p>Exercise: Represent 2, 4, 6, 8, 16, 32, 64, 128 in hex</p>
                 </section>
 
@@ -201,7 +203,7 @@ print fib(10)
                 </section>
 
                 <section>
-                    <h2>In Code</h2>
+                    <h2>GCD Algorithm In Code</h2>
                     <pre><code data-trim contenteditable class="python">
 def gcd(a, b):
     while b != 0:
@@ -500,7 +502,7 @@ $ python
                 // Amount of pixels to move the parallax background per slide step,
                 // a value of 0 disables movement along the given axis
                 // These are optional, if they aren't specified they'll be calculated automatically
-                parallaxBackgroundHorizontal: 50,
+                parallaxBackgroundHorizontal: 30,
                 parallaxBackgroundVertical: 50,
 
 				// Optional reveal.js plugins
