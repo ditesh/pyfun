@@ -4,23 +4,19 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Python Fun-ctors</title>
+		<title>pyfun</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="description" content="A short background on Python functions">
 		<meta name="author" content="Ditesh Gathani">
-
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
@@ -172,6 +168,14 @@ print fib(10)
                         </ol>
                 </section>
 
+				<section>
+                    <h2>What does machine code look like?</h2>
+                    <p>Note: hexadecimal (hex) numbers are basically base-16 numbers</p>
+                    <p><code>hexdump</code> fun</p>
+                    <p><code>magic numbers</code> fun</p>
+                    <p>Exercise: Represent 2, 4, 6, 8, 16, 32, 64, 128 in hex</p>
+                </section>
+
                 <section>
                     <h2>Euclid's GCD Algorithm</h2>
 
@@ -220,311 +224,258 @@ def gcd(a, b):
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Abstract_syntax_tree_for_Euclidean_algorithm.svg">
                 </section>
 
-
 				<section>
                     <h2>Types in Python</h2>
+                    <p>int: -ve, +ve immutable ints of non-limited length</p>
+                    <p>strings: immutable sequence of 8-bit characters</p>
+                    <p>lists: a mutable list of elements</p>
+                    <img src="http://www.asciitable.com/index/asciifull.gif">
+                </section>
 
+                <section>
+                    <h2>Common string ops</h2>
+                    <p>Exercise: print the length of a given string</p>
+                    <p>Exercise: prepend a string with "potato "</p>
+                    <p>Exercise: append a string with the length of the string</p>
+                    <p>Exercise: <code>strip</code> leading and lagging whitespace</p>
+                    <p>Exercise: print a string that states its length (calculate it dynamically)</p>
+                </section>
+
+				<section>
+                    <h2>Getting back on track</h2>
+                    <pre><code data-trim contenteditable class="python">
+def fib(n):
+
+    print "n is " + str(n)
+
+    a, b = 1, 1
+
+    for i in range(n-1):
+        a, b = b, a + b
+
+    return a
+
+print fib(10) # all good!
+print fib("potato") # what if a malicious attacker does this?
+                        </code></pre>
+                </section>
+
+                <section>
+                    <h2>Type sniffing</h2>
+                    <pre><code data-trim contenteditable class="python">
+def typo(n):
+    if type(n) is int: # defensive coding
+        print "its an integer"
+    else:
+        print "its a potato!"
+
+typo(123)
+typo("123")
+typo("x123")
+typo("123x")
+                    </code></pre>
+                    <p>Exercise: integrate type sniffing into <code>fib()</code></p>
+                </section>
+
+                <section>
+                    <h2>Recursion</h2>
+                    <p>Exercise: Google recursion</p>
+                    <p>Exercise: what's one example of mathematical recursion?</p>
+                    <p>Exercise: what's one example of philosophical recursion?</p>
+                </section>
+
+                <section>
+                    <p>Calculate sum of first 10 numbers</p>
+
+                    \[\begin{aligned}
+                    S & =  1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10\\
+                    S & = 10 + 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 +  1\\
+                    11 & = 1 + 10\\
+                    11 & = 2 +  9\\
+                    S & = 5 \times 11 = 55\\
+
+                    S & = {n \over 2} {(n+1)}
+
+                    \end{aligned} \]
+
+                    <pre><code data-trim contenteditable class="python">
+def sums(n):
+
+    return sums(n-1)+n
+
+print sums(10) # returns 10+9+8+7+6+5+4+3+2+1
+
+                    </code></pre>
+                </section>
+
+				<section>
+                    <pre><code data-trim contenteditable class="python">
+def fib(n):
+
+    a, b = 1, 1
+
+    for i in range(n-1):
+        a, b = b, a + b
+
+    return a
+
+print fib(10)
+                    </code></pre>
+                    <p>Exercise: rewrite this as recursive fibonacci function</p>
+                    <p>Hint: fib(n) = fib(n-1) + fib(n-2) for n > 2</p>
+                </section>
+
+				<section>
+                    <pre><code data-trim contenteditable class="python">
+def fib(n):
+
+    if n == 1: return 1 # F(1) = 1
+    if n == 2: return 1 # F(2) = 1
+    return fib(n-1) + fib(n-2) # F(n) = F(n-1) + F(n-2)
+
+print fib(10)
+                    </code></pre>
+                </section>
+
+				<section>
+                    <h2>Call Stack</h2>
+                    <p>Note to myself: draw out execution graph and call stack</p>
+                    <p>Thought exercise: how do you speed this up?</p>
+                </section>
+
+				<section>
+                    <h2>Default parameters</h2>
+                    <pre><code data-trim contenteditable class="python">
+def fib(n):
+
+    if n == 1: return 1 # F(1) = 1
+    if n == 2: return 1 # F(2) = 1
+    return fib(n-1) + fib(n-2) # F(n) = F(n-1) + F(n-2)
+
+print fib() # What happens here?
+                    </code></pre>
+                    <p>Exercise: try running this code? How would you fix it?</p>
+                </section>
+
+				<section>
+                    <h2>Functions are first class objects</h2>
+                    <pre><code data-trim contenteditable class="python">
+def fib():
+
+    data = {}
+
+    def helper(n):
+
+        if n not in data:
+            data[n-2] = fib(n-2)
+            data[n-1] = fib(n-1)
+            data[n] = data[n-2] + data[n-1]
+
+        return data[n]
+
+    # we can return a function
+    return helper
+
+fn = fib()
+print fn(30)
+print fn()(30) # equivalent
+                    </code></pre>
+                    <p>Exercise: try increasing n</p>
+                </section>
+
+				<section>
+                    <h2>Functions are first class objects</h2>
+                    <pre><code data-trim contenteditable class="python">
+def fib():
+
+    data = {}
+
+    def helper(n):
+
+        if n not in data:
+            data[n-2] = fib(n-2)
+            data[n-1] = fib(n-1)
+            data[n] = data[n-2] + data[n-1]
+
+        return data[n]
+
+    # we can return a function
+    return helper
+
+fn = fib()
+print fn(30)
+print fn()(30) # equivalent
+                    </code></pre>
+                    <p>Exercise: try increasing n</p>
                 </section>
 
 
-				<!-- Example of nested vertical slides -->
 				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+                    <h2>Variadic args</h2>
+                    <p>Challenge: accept any number of ints and return their sum</p>
+                    <pre><code data-trim contenteditable class="python">
+# vals here is known as a variadic arg
+# it is passed in as a list
+def sums(*vals):
+
+    retval = 0
+    for i in vals: retval += i
+    return retval
+
+print sums(1,10,-300)
+                    </code></pre>
+                </section>
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
+                    <p>Challenge: accept any number of ints from the CLI and print their sum</p>
+                    <pre><code data-trim contenteditable class="python">
+# Ignore this very important bit for a sec
+# We'll loop back to this
+# Try running this
+import sys
+
+def main():
+    print sys.argv
+
+if __name__ == "__main__":
+    main()
+                    </code></pre>
+                    <p>__name__ is a <code>magic variable</code></p>
+                    <p>Its automagically set by the Python interpreter</p>
+                    <p>Important: Frown on magic unless its well documented. Even then, frown a little bit</p>
+                    <p>Exercise: accept a number of ints from the CLI and print their sum
+                </section>
 
 				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+                    <h2>Modules</h2>
+                    <p>Modules are collections of code</p>
+                    <pre><code data-trim contenteditable class="python">
+# this goes into magic/math.py folder
+# also touch magic/__init__.py for some package magic
+def fib(n):
+    # fib implementation here
+
+def sums(n):
+    # sums implementation here
+                    </code></pre>
+
+                    <pre><code data-trim contenteditable class="bash">
+$ python
+>>> import magic.math
+>>> print magic.math.fib(10)
+>>> from magic.math import fib
+>>> print fib(10)
+>>> from magic.math import *
+>>> print sums(10)
+                    </code></pre>
+                </section>
 
 				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
-
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
-					</section>
-				</section>
-
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
-
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
-
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							<tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							<tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							<tr>
-						</tbody>
-					</table>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
-
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
-
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
+                    <h2>Functional Programming</h2>
+                    <p>Functions are first class objects</p>
+                    <p>Functions are can be passed to functions</p>
+                    <p>Functions are can be returned from functions</p>
+                </section>
 
 			</div>
 
