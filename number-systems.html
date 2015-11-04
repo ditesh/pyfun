@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>pyfun</title>
+
+        <meta name="description" content="A short background on Python functions">
+		<meta name="author" content="Ditesh Gathani">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Number Systems</h1>
+					<p>
+						<small>Created by <a href="http://ditesh.gathani.org">Ditesh Gathani</a> / <a href="http://twitter.com/ditesh">@ditesh</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Integer Math</h2>
+                    <pre><code data-trim contenteditable class="python">
+$ python
+>>> 5 + 2
+7
+>>> -3 - 2
+-5
+>>> 5 * 2
+10
+>>> 5 / 2
+2
+>>> 5 % 2
+1
+>>> pow(5, 2) # 5*5
+                    </code></pre>
+                    <p>Addition, subtraction, multiplication, powers work as expected</p>
+                    <p>Division returns the <strong>quotient</strong></p>
+                    <p>Modulus (%) returns the <strong>remainder</strong></p>
+				</section>
+
+				<section>
+                    <h2>Foundational basics</h2>
+                    <pre><code data-trim contenteditable class="python">
+>>> # Get both quotient and remainder
+>>> # (divmod is an inbuilt python function)
+>>> print divmod(5, 2)
+(2, 1)
+>>> # Get length of a number
+>>> num = str(1645)
+>>> print len(num)
+4
+>>> # Access first digit
+>>> print num[0]
+'1'
+>>> # Notice its a string?
+>>> # Lets convert the first digit back to integer
+>>> print int(num[0])
+1
+
+                    </code></pre>
+                </section>
+
+				<section>
+                    <h2>Challenge #1</h2>
+                    <p>Write code to convert 111011111 (base 2) into base 10</p>
+                    <pre><code data-trim contenteditable class="python">
+# Hint in pseudocode:
+# 0. Assign n to the in base 2 to be converted to base 10
+#    n = 111011111
+# 1. Assume output is n in base 10, and set it to 0
+#    output = 0
+# 2. Convert n to a string
+#    eg: nstr = str(n)
+# 3. Figure out how long the string (nstr) and call it nlen
+# 4. Loop through the length of the string
+# 5. For each iteration of the loop:
+#    (we will loop upwards, from 0 till len(nstr)-1)
+#    this means that we should expect to read the digits from right to left
+#    (like the Arabs)
+# 5a.   Assign the character by the offset indicated by the loop variable (i.e., i)
+#       Eg, x = nstr[len(nstr) - 1 - i]
+        (this may take time to understand)
+# 5b.   Convert x to an integer, call it y
+# 5c.   Multiply and sum it up (as per the algorithm)
+#       output += y * pow(2, i)
+# 6.    Print output
+# 7.    Rejoice!
+                    </code></pre>
+                </section>
+
+				<section>
+                    <h2>Answer #1</h2>
+                    <p>Write code to convert 111011111 (base 2) into base 10</p>
+                    <pre><code data-trim contenteditable class="python">
+n = 111011111
+output = 0
+nstr = str(n)
+nlen = len(nstr)
+
+# Our ever erstwhile loop variable
+i=0
+
+while (i < nlen):
+
+    x = nstr[nlen - 1 - i]
+    y = int(x)
+    output += y * pow(2, i)
+
+# This should print 479
+print output
+                    </code></pre>
+                </section>
+
+				<section>
+                    <h2>Challenge #2</h2>
+                    <p>Adapt your code to a function that accepts a number in base 2 as a parameter and returns the number in base 10</p>
+                    <pre><code data-trim contenteditable class="python">
+# Hint
+def bin2dec(n):
+    # Do something useful here
+    # and return the results
+
+# This should print 479
+print bin2dec(111011111)
+                    </code></pre>
+                </section>
+
+				<section>
+                    <h2>Answer #2</h2>
+                    <pre><code data-trim contenteditable class="python">
+def bin2dec(n):
+
+    i=0
+    output = 0
+    nstr = str(n)
+    nlen = len(nstr)
+
+    while (i < nlen):
+
+        x = nstr[nlen - 1 - i]
+        y = int(x)
+        output += y * pow(2, i)
+
+    return output
+
+# This should print 479
+print bin2dec(111011111)
+                    </code></pre>
+ 
+                </section>
+
+				<section>
+                    <h2>Challenge #3</h2>
+                    <p>Adapt your function to accept a number as first parameter, and the base of the parameter as the second parameter, and returns the number in base 10/p>
+                    <pre><code data-trim contenteditable class="python">
+# Hint
+def something2dec(n, base):
+    # Do something useful here
+    # and return the results
+
+# Send in a base 2 number
+# This should print 479
+print something2dec(111011111, 2)
+
+# Send in a base 8 number
+# This should print 737
+print something2dec(111011111, 8)
+                    </code></pre>
+                </section>
+
+				<section>
+                    <h2>Answer #3</h2>
+                    <pre><code data-trim contenteditable class="python">
+def something2dec(n, base):
+
+    i=0
+    output = 0
+    nstr = str(n)
+    nlen = len(nstr)
+
+    while (i < nlen):
+
+        x = nstr[nlen - 1 - i]
+        y = int(x)
+        output += y * pow(base, i)
+
+    return output
+
+# Send in a base 2 number
+# This should print 479
+print something2dec(111011111, 2)
+
+# Send in a base 8 number
+# This should print 19141193
+print something2dec(111011111, 8)
+                    </code></pre>
+ 
+                </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+                // Parallax background image
+                parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+
+                // Parallax background size
+                parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+
+                // Amount of pixels to move the parallax background per slide step,
+                // a value of 0 disables movement along the given axis
+                // These are optional, if they aren't specified they'll be calculated automatically
+                parallaxBackgroundHorizontal: 30,
+                parallaxBackgroundVertical: 50,
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

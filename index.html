@@ -83,24 +83,30 @@ $ ./main.py # it runs from the CLI
                 </section>
 
 				<section>
-                        <pre><code data-trim contenteditable class="python">
+                    <h2>Assignment</h2>
+                    <pre><code data-trim contenteditable class="python">
 # What is F(10)
 i, a, b = 0, 1, 1
 
 while (i < 11):
     i += 1
-    a, b = b, a + b
+    t = a + b
+    a = b
+    b = t
+    # a, b = b, a + b
+    # a = b
+    # b = a + b
 
 print a
-                        </code></pre>
-                        <p>Exercise: draw an execution table</p>
-                        <p>What does <code>+=</code> do?</p>
-                        <p>What does the variable swap do?</p>
-                        <p>Is the code correct? (Hint: off by one errors are super common)</p>
+                    </code></pre>
+                    <p>Exercise: draw an execution table</p>
+                    <p>What does <code>+=</code> do?</p>
+                    <p>What does the variable swap do?</p>
+                    <p>Is the code correct? (Hint: off by one errors are super common)</p>
                 </section>
 
 				<section>
-                        <pre><code data-trim contenteditable class="python">
+                    <pre><code data-trim contenteditable class="python">
                             
 a, b = 1, 1
 
