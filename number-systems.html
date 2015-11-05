@@ -53,11 +53,12 @@ $ python
 -5
 >>> 5 * 2
 10
->>> 5 / 2
+>>> 5 / 2 # returns quotient
 2
->>> 5 % 2
+>>> 5 % 2 # return remainder
 1
 >>> pow(5, 2) # 5*5
+25
                     </code></pre>
                     <p>Addition, subtraction, multiplication, powers work as expected</p>
                     <p>Division returns the <strong>quotient</strong></p>
@@ -67,7 +68,7 @@ $ python
 				<section>
                     <h2>Foundational basics</h2>
                     <pre><code data-trim contenteditable class="python">
->>> # Get both quotient and remainder
+>>> # Get both quotient and remainder as a tuple
 >>> # (divmod is an inbuilt python function)
 >>> print divmod(5, 2)
 (2, 1)
@@ -89,27 +90,36 @@ $ python
 				<section>
                     <h2>Challenge #1</h2>
                     <p>Write code to convert 111011111 (base 2) into base 10</p>
+				</section>
+
+				<section>
+                    <h2>Pseudocode</h2>
                     <pre><code data-trim contenteditable class="python">
-# Hint in pseudocode:
-# 0. Assign n to the in base 2 to be converted to base 10
+# 0. Assign n to the number in base 2 to be converted to base 10
 #    n = 111011111
+
 # 1. Assume output is n in base 10, and set it to 0
 #    output = 0
+
 # 2. Convert n to a string
 #    eg: nstr = str(n)
+
 # 3. Figure out how long the string (nstr) and call it nlen
+
 # 4. Loop through the length of the string
+
 # 5. For each iteration of the loop:
 #    (we will loop upwards, from 0 till len(nstr)-1)
 #    this means that we should expect to read the digits from right to left
-#    (like the Arabs)
 # 5a.   Assign the character by the offset indicated by the loop variable (i.e., i)
 #       Eg, x = nstr[len(nstr) - 1 - i]
-        (this may take time to understand)
+#        (this may take time to understand)
 # 5b.   Convert x to an integer, call it y
 # 5c.   Multiply and sum it up (as per the algorithm)
 #       output += y * pow(2, i)
+
 # 6.    Print output
+
 # 7.    Rejoice!
                     </code></pre>
                 </section>
@@ -222,6 +232,49 @@ print something2dec(111011111, 8)
                     </code></pre>
  
                 </section>
+
+				<section>
+                    <h2>Challenge #4</h2>
+                    <p>Write code to convert 73 (base 10) into binary (base 2)</p>
+                    <iframe width="640" height="480" src="https://www.youtube.com/embed/TIYMmbHik08" frameborder="0" allowfullscreen></iframe>
+                </section>
+
+				<section>
+                    <h2>Pseudocode</h2>
+                    <pre><code data-trim contenteditable class="python">
+# 0. Assign n to the number in base 10 to be converted to base 2
+#    n = 73
+
+# 1. Assume output is n in base 10, and set it to 0
+#    output = 0
+
+# 2. Convert n to a string
+#    eg: nstr = str(n)
+
+# 3. Figure out how long the string (nstr) and call it nlen
+
+# 4. Loop through the length of the string
+
+# 5. For each iteration of the loop:
+#    (we will loop upwards, from 0 till len(nstr)-1)
+#    this means that we should expect to read the digits from right to left
+# 5a.   Assign the character by the offset indicated by the loop variable (i.e., i)
+#       Eg, x = nstr[len(nstr) - 1 - i]
+#        (this may take time to understand)
+# 5b.   Convert x to an integer, call it y
+# 5c.   Multiply and sum it up (as per the algorithm)
+#       output += y * pow(2, i)
+
+# 6.    Print output
+
+# 7.    Rejoice!
+                    </code></pre>
+ 
+                </section>
+			</div>
+		</div>
+
+
 			</div>
 		</div>
 
