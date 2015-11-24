@@ -38,24 +38,112 @@
 				<section>
                     <h1>Hacking</h1>
                     <h2>For Fun & Profit</h2>
+                    <br>
+                    <h3>Modules</h3>
 					<p>
 						<small>Created by <a href="http://ditesh.gathani.org">Ditesh Gathani</a> / <a href="http://twitter.com/ditesh">@ditesh</a></small>
 					</p>
 				</section>
 
-                <section>
-                    <img src="https://qph.is.quoracdn.net/main-qimg-4e6c238477813abd5335d7bf51b54c15?convert_to_webp=true">
+				<section>
+                    <p>Consider this</p>
+                    <pre><code data-trim contenteditable class="python">
+# Return n*(n-1)*(n-2)*...*1
+def fact(n):
+
+    retval = 1
+
+    for i in range(1,n+1):
+        retval *= i
+
+    return retval
+
+# Return n+(n-1)+(n-2)+...+1
+def sums(n): 
+
+    retval = 0
+
+    for i in range(1,n+1):
+        retval += i
+
+    return retval
+
+# This should print 55
+print sums(10)
+
+# This should print 362880
+print fact(10)
+                    </code></pre>
+				</section>
+
+				<section>
+                    <h2>Modules</h2>
+                    <pre><code data-trim contenteditable class="python">
+# This goes into magic/math.py folder
+# also touch magic/__init__.py for some package magic
+# Return n*(n-1)*(n-2)*...*1
+def fact(n):
+    # Code goes here
+
+# Return n+(n-1)+(n-2)+...+1
+def sums(n): 
+    # Code goes here
+                    </code></pre>
                 </section>
 
                 <section>
-                    <a href="basics.html">1. Basics</a><br>
-                    <a href="number-systems.html">2. Number Systems</a><br>
-                    <a href="modules.html">3. Modules</a><br>
-                    <a href="classes.html">4. Classes</a><br>
-                    <a href="types.html">5. Types</a>
+                    <pre><code data-trim contenteditable class="bash">
+$ python
+>>> import magic.math
+>>> print magic.math.fact(10)
+362880
+>>> print magic.math.sums(10)
+55
+>>> from magic.math import fact
+>>> print fact(10)
+362880
+>>> from magic.math import *
+>>> print sums(10)
+55
+                    </code></pre>
                 </section>
+
+				<section>
+                    <h2>CLI</h2>
+                    <pre><code data-trim contenteditable class="python">
+# Ignore this very important bit for a sec
+# We'll loop back to this
+# Try running this
+import sys
+
+def main():
+    print sys.argv
+
+if __name__ == "__main__":
+    main()
+                    </code></pre>
+                    <p>__name__ is a <code>magic variable</code></p>
+                    <p>Its automagically set by the Python interpreter</p>
+                    <p>Important: Frown on magic unless its well documented. Even then, frown a little bit</p>
+                </section>
+
+                <section>
+                    <p>Challenge #1: Accept integer from CLI and print sums() and fact()</p>
+                    <pre><code data-trim contenteditable class="bash">
+import sys
+import magic.math
+
+def main():
+    print magic.math.sums(int(sys.argv[1]))
+    print magic.math.fact(int(sys.argv[1]))
+
+if __name__ == "__main__":
+    main()
+                    </code></pre>
+                </section>
+
+
 			</div>
-
 		</div>
 
 		<script src="lib/js/head.min.js"></script>

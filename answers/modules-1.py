@@ -17,3 +17,9 @@ def sums(n):
         retval += i
 
     return retval
+
+# This should print 55
+print sums(10)
+
+# This should print 362880
+print fact(10)
